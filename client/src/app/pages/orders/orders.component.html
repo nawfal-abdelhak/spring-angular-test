@@ -29,4 +29,4 @@
 </div>
 <app-article (sendArticles)="EventHandler($event)" [order]="selectedOrder" *ngIf="show_articles"> </app-article>
 
-<div class="no_orders" *ngIf="!orderService.orders$.value.length && !show_articles "> There is no orders</div>
+<div class="no_orders" *ngIf="!orderService.orders$.value.length && !show_articles "> There are no orders</div>
