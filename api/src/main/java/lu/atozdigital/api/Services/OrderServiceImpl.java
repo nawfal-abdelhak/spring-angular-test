@@ -38,10 +38,8 @@ public class OrderServiceImpl implements  IOrderService{
         String generatedString = getRadmomString();
         order.setReference(generatedString);
         List<Article> articles= articlesDTO.stream().map(articleDTO -> modelMapper.map(articleDTO,Article.class)).collect(Collectors.toList());
-
         order.setArticles(articles);
         orderRepository.save(order);
-
         OrderDTO orderDTO= modelMapper.map(order, OrderDTO.class);
         return orderDTO;
     }
@@ -72,6 +70,5 @@ public class OrderServiceImpl implements  IOrderService{
         }
         String saltStr = salt.toString();
         return saltStr;
-
     }
 }

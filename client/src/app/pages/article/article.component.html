@@ -30,25 +30,26 @@
     <p class="add_icon"><i  class="bi bi-plus-circle"></i></p>
 </div> -->
 
-<main >
+<main>
     <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
         <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
             <div *ngFor="let article of articleService.articles$ | async">
                 <div style="cursor: pointer
                 ;" (click)="article.selected=!article.selected" class="card h-100 shadow-sm"> <img
-                        [src]="article.picture"
-                        class="card-img-top" style="height: 300px; object-fit: cover;" alt="...">               
-                    <div  class="card-body">
+                        [src]="article.picture" class="card-img-top" style="height: 300px; object-fit: cover;"
+                        alt="...">
+                    <div class="card-body">
                         <div class="clearfix mb-3"> <span class="float-end price-hp">{{article.price}}.00 MAD</span>
                         </div>
                         <h5 class="card-title">{{article.name}}</h5>
                         <div *ngIf="order!==undefined" class="form-check">
-                            <input class="form-check-input" type="checkbox"  [(ngModel)]="article.selected" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" [(ngModel)]="article.selected"
+                                id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Select
                             </label>
                         </div>
-                       
+
                     </div>
 
 
@@ -61,15 +62,13 @@
 
 
 
-<div class="no_artilces" *ngIf="!articleService.articles$.value.length" > There is no artilces</div>
+<div class="no_artilces" *ngIf="!articleService.articles$.value.length"> There is no artilces</div>
 
 
-<div *ngIf="order!==undefined"  class="add">
-   <div (click)="confirmOrder()" class="text-center my-4 add_icon" > <a class="btn btn-warning">Confirm</a> </div>
+<div *ngIf="order!==undefined" class="add">
+    <div (click)="confirmOrder()" class="text-center my-4 add_icon"> <a class="btn btn-warning">Confirm</a> </div>
 </div>
 
 <div *ngIf="order===undefined" routerLink="/articles/add" class="add">
     <p class="add_icon"><i class="bi bi-plus-circle"></i></p>
 </div>
-
-

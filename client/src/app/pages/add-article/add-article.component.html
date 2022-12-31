@@ -9,9 +9,8 @@
                 <label for="price">price</label>
                 <input type="number" formControlName="price" class="form-control" id="price" placeholder="price">
             </div>
-            <div class="form-group col-8 offset-2">
-                <input  (change)="handleFileInput($event)" id="file-input" formControlName="picture"  type="file" ref="file" accept=".png, .jpg, .jpeg">
-               
+            <div style="margin-top: 5px;" class="form-group col-8 offset-2">
+                <input  (change)="handleFileInput($event)" id="file-input" formControlName="picture"  type="file" ref="file" accept=".png, .jpg, .jpeg">           
             </div>
             <button [disabled]="!articleForm.valid" class="btn btn-primary col-4 offset-4" (click)="addArticle()">Submit</button>
         </div>

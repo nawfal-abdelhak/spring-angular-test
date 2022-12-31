@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OrderService } from './services/order.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'client';
+
+  constructor(public orderService:OrderService) { }
+
+  ngOnInit(): void {
+    this.getOrders()
+  }
+
+
+  getOrders() {
+    this.orderService.getOrders().then((data: any) => {
+      this.orderService.orders$.next(data)
+    }).catch()
+  }
 }
+
+

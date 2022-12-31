@@ -23,28 +23,23 @@ public class ArticleController {
 
     @PostMapping("")
     public ResponseEntity<?> addArticle(@RequestParam("name") String name ,@RequestParam("price") String price ,@RequestParam("image") MultipartFile image) throws IOException {
-
         return ResponseEntity.ok().body(articleService.addArticle(name,price,image));
     }
 
     @GetMapping ("/{id}")
     public ResponseEntity<?> getArticle( @PathVariable Long id){
-        ArticleDTO article = articleService.getArticle(id);
-
-        if(article==null){
+        ArticleDTO articleDTO = articleService.getArticle(id);
+        if(articleDTO==null){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("not found");
         }
         else {
-            return ResponseEntity.ok().body(article);
+            return ResponseEntity.ok().body(articleDTO);
         }
-
     }
 
     @GetMapping ("")
     public ResponseEntity<?> getAllArticles(){
         List<ArticleDTO> articles = articleService.getAllArticles();
-
         return ResponseEntity.ok().body(articles);
-
     }
 }

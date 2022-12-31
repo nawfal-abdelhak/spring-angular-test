@@ -34,9 +34,8 @@ public class ArticleServiceImpl implements  IArticleService{
         article.setPicture(ImageHandler.uploadFile(image));
         article.setName(name);
         article.setPrice(Integer.parseInt(price));
-
-        ArticleDTO articledto = modelMapper.map(article,ArticleDTO.class);
         articleRepository.save(article);
+        ArticleDTO articledto = modelMapper.map(article,ArticleDTO.class);
         return articledto ;
 
 
@@ -45,13 +44,11 @@ public class ArticleServiceImpl implements  IArticleService{
     @Override
     public ArticleDTO getArticle(Long id) {
         Optional<Article> article = articleRepository.findById(id);
+        ArticleDTO articledto= modelMapper.map(article.get(), ArticleDTO.class);
         if(article.isPresent()){
-            ArticleDTO articledto= modelMapper.map(article, ArticleDTO.class);
             return articledto;
         }
-
         return null;
-
     }
 
     @Override
@@ -60,6 +57,4 @@ public class ArticleServiceImpl implements  IArticleService{
         List<ArticleDTO> articlesDTO= articles.stream().map(article -> modelMapper.map(article,ArticleDTO.class)).collect(Collectors.toList());
         return articlesDTO;
     }
-
-
 }

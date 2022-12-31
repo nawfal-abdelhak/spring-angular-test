@@ -13,7 +13,6 @@ export class ApiService {
 
   constructor(
     private http: HttpClient,
-    private helper: HelpersService,
   ) { }
 
   getApiUrl() {
@@ -35,8 +34,8 @@ export class ApiService {
 
 
 
-  async get(endpoint: string, reqOpts?: any) {
-    return await lastValueFrom(this.http.get(this.url + '/' + endpoint, reqOpts));
+   get(endpoint: string, reqOpts?: any) {
+    return  lastValueFrom(this.http.get(this.url + '/' + endpoint, reqOpts));
   }
 
 
@@ -45,12 +44,12 @@ export class ApiService {
     return lastValueFrom(this.http.post(this.url + '/' + endpoint, body, reqOpts));
   }
 
-  async put(endpoint: string, body: any, reqOpts?: any) {
-    return await lastValueFrom(this.http.put(this.url + '/' + endpoint, body, reqOpts));
+   put(endpoint: string, body: any, reqOpts?: any) {
+    return  lastValueFrom(this.http.put(this.url + '/' + endpoint, body, reqOpts));
   }
 
-  async delete(endpoint: string, reqOpts?: any) {
-    return await lastValueFrom(this.http.delete(this.url + '/' + endpoint, reqOpts));
+   delete(endpoint: string, reqOpts?: any) {
+    return  lastValueFrom(this.http.delete(this.url + '/' + endpoint, reqOpts));
   }
 
   patch(endpoint: string, body: any, reqOpts?: any) {
