@@ -1,0 +1,26 @@
+.add_icon {
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+    cursor: pointer;
+}
+
+.bi-plus-circle {
+    font-size: 60px;
+    color: blue;
+}
+
+.show_type{
+    text-align: center;
+    font-size: 32px;
+}
+
+.no_orders{
+    position: absolute;
+    top: 50%;
+    left: 42%;
+    font-size: 35px;
+  
+}
+
+

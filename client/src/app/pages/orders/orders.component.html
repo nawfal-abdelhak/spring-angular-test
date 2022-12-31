@@ -1,0 +1,31 @@
+<div  class="container">
+<table *ngIf="!show_articles && orderService.orders$.value.length" class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">REF</th>
+        <th scope="col">Date</th>
+        <th scope="col">Edit</th>
+   
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let  order of orderService.orders$ | async">
+        <th scope="row">{{order.reference}}</th>
+        <td>{{ helper.formatDateMonthName(order.date)}}</td>
+        <td><button type="button" class="btn btn-primary" (click)="editOrder(order)">Edit</button></td>
+      </tr>
+     
+    </tbody>
+  </table>
+
+  
+
+<div (click)="addOrder()" *ngIf="!show_articles" class="add">
+    <p class="add_icon"><i  class="bi bi-plus-circle"></i></p>
+</div>
+
+<div class="show_type" > {{selectedOrder?'edit Order':(show_articles && !selectedOrder)?'add Order':''}} </div>
+</div>
+<app-article (sendArticles)="EventHandler($event)" [order]="selectedOrder" *ngIf="show_articles"> </app-article>
+
+<div class="no_orders" *ngIf="!orderService.orders$.value.length && !show_articles " > There is no orders</div>
