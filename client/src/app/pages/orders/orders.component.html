@@ -4,6 +4,7 @@
       <tr>
         <th scope="col">REF</th>
         <th scope="col">Date</th>
+        <th scope="col">number of articles</th>
         <th scope="col">Edit</th>
 
       </tr>
@@ -12,6 +13,7 @@
       <tr *ngFor="let  order of orderService.orders$ | async">
         <th scope="row">{{order.reference}}</th>
         <td>{{ helper.formatDateMonthName(order.date)}}</td>
+        <td>{{ order.articles.length}}</td>
         <td><button type="button" class="btn btn-primary" (click)="editOrder(order)">Edit</button></td>
       </tr>
 

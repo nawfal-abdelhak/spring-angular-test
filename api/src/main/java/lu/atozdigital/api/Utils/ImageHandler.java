@@ -1,10 +1,12 @@
 package lu.atozdigital.api.Utils;
-
+import java.io.InputStream;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.Random;
 
 import static java.nio.file.Files.copy;
@@ -21,7 +23,10 @@ public class ImageHandler {
         String ext = FilenameUtils.getExtension(imagename);
         imagename = getRadmomString()+"."+ext;
         imageStorage = get(ImageDirectory, imagename).toAbsolutePath().normalize();
-        copy(image.getInputStream(), imageStorage, REPLACE_EXISTING);
+        try (InputStream inputStream = image.getInputStream()) {
+            Files.copy(inputStream, imageStorage,
+                    StandardCopyOption.REPLACE_EXISTING);
+        }
         return imagename;
     }
 
